@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "40c555cd-7c83-4cf1-bbb6-8bae15a2f342",
+		"name": "Queue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"waiter\": \"Luiz\",\n    \"tableNo\": 22,\n    \"kitchenItems\": [{\n            \"name\": \"Entrada\",\n            \"quantity\": 1,\n            \"note\":\"Cliente pediu menos salada\"\n        },\n        {\n            \"name\": \"Prato principal\",\n            \"quantity\": 2,\n            \"note\":\"Cliente pediu menos salada\"\n        }\n    ],\n    \"barItems\": [{\n            \"name\": \"Coca-Cola\",\n            \"quantity\": 1,\n            \"note\":\"Sem gelo\"\n        },\n        {\n            \"name\": \"Cerveja\",\n            \"quantity\": 1,\n            \"note\":\"\"\n        }\n    ],\n    \"statusBar\": \"PREPARING\",\n    \"statusKitchen\": \"PREPARING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Bar Status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"barStatus\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/bar-orders/6159f239a4a12c33f3759aa7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"bar-orders",
+						"6159f239a4a12c33f3759aa7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Kitchen Status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"barStatus\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/kitchen-orders/615a1d8ae3c2fa5d601c8ed7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"kitchen-orders",
+						"615a1d8ae3c2fa5d601c8ed7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MailTo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
