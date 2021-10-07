@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - 5672:5672
+            - 15672:15672
+        volumes:
+            - ./dados:/var/lib/rabbitmq/
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest
+        networks:
+            - mesttra-net
+            
+    mariadb:
+        image: mariadb
+        container_name: mariadb
+        restart: always
+        environment:
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - '3306:3306'
+        networks:
+          - mesttra-net
+          
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        restart: always
+        environment:
+           MONGO_INITDB_DATABASE: root
+        ports:
+          - 27017:27017
+        networks: 
+          - mesttra-net
+      
+networks:
+  mesttra-net:
+    driver: bridge
+    name: mesttra-net
